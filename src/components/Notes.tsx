@@ -26,25 +26,26 @@ const Notes: React.FC = () => {
 
     return (
         <div className="container">
-            <h1>Today</h1>
+            <div className="header">
+                <h1>Today</h1>
 
-            <div className="action-buttons">
-                <button
-                    onClick={undo}
-                    disabled={!canUndo}
-                    className="action-btn"
-                >
-                    Undo
-                </button>
-                <button
-                    onClick={redo}
-                    disabled={!canRedo}
-                    className="action-btn"
-                >
-                    Redo
-                </button>
+                <div className="action-buttons">
+                    <button
+                        onClick={undo}
+                        disabled={!canUndo}
+                        className="action-btn"
+                    >
+                        Undo
+                    </button>
+                    <button
+                        onClick={redo}
+                        disabled={!canRedo}
+                        className="action-btn"
+                    >
+                        Redo
+                    </button>
+                </div>
             </div>
-
             <div className="search-bar">
                 <input
                     type="search"
@@ -88,16 +89,21 @@ const Notes: React.FC = () => {
                         className={`task-item ${
                             task.completed ? 'task-complete' : ''
                         }`}
+                        onClick={() => toggleTask(task.id)}
                     >
-                        <input
-                            type="checkbox"
-                            checked={task.completed}
-                            onChange={() => toggleTask(task.id)}
-                        />
+                        <input type="checkbox" checked={task.completed} />
                         <span className={task.completed ? 'completed' : ''}>
                             {task.text}
                         </span>
-                        <button onClick={() => deleteTask(task.id)}>×</button>
+                        <button
+                            onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                deleteTask(task.id);
+                            }}
+                        >
+                            ×
+                        </button>
                     </div>
                 ))}
             </div>

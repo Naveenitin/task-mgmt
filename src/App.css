@@ -28,6 +28,7 @@ h1 {
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-bottom: 10px;
+    border-radius: 18px;
 }
 
 .filter-buttons {
@@ -82,8 +83,6 @@ h1 {
 }
 
 .task-item span.completed {
-    text-decoration: line-through;
-    color: #888;
     border-color: #45a049;
 }
 
@@ -96,7 +95,7 @@ h1 {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 28px;
     color: #ff4444;
 }
 
@@ -147,4 +146,10 @@ h1 {
 
 .action-btn:not(:disabled):hover {
     background-color: #45a049;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
